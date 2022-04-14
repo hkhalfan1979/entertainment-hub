@@ -1,4 +1,4 @@
-# entertainment-hub
+# Entertainment-Hub
 
 #test
 
