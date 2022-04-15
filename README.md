@@ -10,12 +10,11 @@ Sydnee Peebles
 ```
 ## Description 
 ```
-Most apps these days provide a feed to its user that they can further customize. Having so many applications makes it difficult to see all the information at once. The purpose of our application is to merge all each seperate API's (Application Program Interface) so the user can curate their feed in one place. For this project we want to have the user easily find movies they're interested in and its corresponding sound track. IF TIME PERMITS we will ATTEMPT to also add tv shows :) so netflix but better because we have MUSSSSIQUE.
+The purpose of our application is to merge two seperate API's (Application Program Interface) so the user can have access to detailed information, from the movie/tv show over-scope down to the very song that stood out to them.
 ```
 ## Proposal
 ```
-Most apps these days provide a feed to its user that they can further customize. Having so many applications makes it difficult to see all the information at once. The purpose of our application is to merge all each seperate API's (Application Program Interface) so the user can curate their feed in one place. For this project we want to have the user easily find movies they're interested in and its corresponding sound track. 
-IF TIME PERMITS we will ATTEMPT to also add tv shows :) so netflix but better because we have MUSSSSIQUE.
+Most streaming websites allow their users to watch select tv shows and movies. But an element that most of these websites lack are a musical aspect. By integrating movie/tv show api with the well known spotify api, we want to allow users to find the album from said movie/tvshow. We plan for the users easy accessability to info on their favorite cinematics down to the music for an in depth interaction. 
 ```
 ## Table of Contents
 ```
