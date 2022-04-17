@@ -30,7 +30,7 @@ var search_api_url = "https://api.themoviedb.org/3/search/movie?api_key=491b43ef
 // to do: append searched movie to html ID
 
 		$(document).ready(function() {
-			var url = 'http://api.themoviedb.org/3/',
+			var url = 'https://api.themoviedb.org/3/',
 			mode = 'search/movie',
 			input,
 			movieName,
