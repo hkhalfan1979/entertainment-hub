@@ -20,3 +20,35 @@ var search_api_url = "https://api.themoviedb.org/3/search/movie?api_key=491b43ef
 				$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.name + "</h3></div>").appendTo(".popular-shows");
 			});
 		});
+
+// script to return search results when button is clicked
+
+// once a search is performed go to console
+
+// you will see the search results in array-object
+
+// to do: append searched movie to html ID
+
+		$(document).ready(function() {
+			var url = 'http://api.themoviedb.org/3/',
+			mode = 'search/movie',
+			input,
+			movieName,
+			key = '?api_key=491b43ef93087cf91389b9e31b71d2b1';
+		 
+			$('button').click(function() {
+			    var input = $('#movie-search').val(),
+				   movieName = encodeURI(input);
+			    $.ajax({
+				   url: url + mode + key + '&query='+movieName ,
+				   dataType: 'jsonp',
+				   success: function(data) {
+				    console.log(data);
+				    
+				   },
+				   error: function (request, status, error) {
+				    alert(status + ", " + error);
+				   }
+			    });
+			});
+		 });
