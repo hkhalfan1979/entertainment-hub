@@ -1,66 +1,76 @@
+// Stated variables, keys and urls.
 var api_key = "491b43ef93087cf91389b9e31b71d2b1"; //my api key
 var api_url = "https://api.themoviedb.org/3/movie/popular?api_key=" + api_key; // popular movies API
 var api_url_tv = "https://api.themoviedb.org/3/tv/popular?api_key=" + api_key; // popular tv shows API
+
+var APIMusic_key ="ySHodLFbACXmhECkEOXxTuSVePemPzwezFSvTTsx"// Leelai's api key
+var music_url= "https://api.discogs.com/artists/22854?token=" + APIMusic_key; //Discogs music data
+
+
 
     // call API and append data to div on index using ".popular-movies" class
 		$.getJSON( api_url, function( data ) {
 
 			$.each( data.results, function( i, item ) {
-				$("<div class='col-md-3'><h3>" + item.title + "</h3></div>").appendTo(".popular-movies");
+				var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
+				$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.title + "</h3><p>"+ item.release_date +"</p></div>").appendTo(".popular-movies");
 			});
 		});
     // call API and append data to div on index using ".popular-shows" class
     $.getJSON( api_url_tv, function( data ) {
 
 			$.each( data.results, function( i, item ) {
-				$("<div class='col-md-3'><h3>" + item.name + "</h3></div>").appendTo(".popular-shows");
+				var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
+				$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.name + "</h3></div>").appendTo(".popular-shows");
 			});
 		});
 
-		//spotify api
- var redirect_uri = "https://hkhalfan1979.github.io/entertainment-hub/" //need our URI to test for authorization.
+// script to return search results when button is clicked
 
- var client_id = "";
- var client_secret="";
- 
- const AUTHORIZE = "https://accounts.spotify.com/authorize";
- 
- function onPageLoad(){
- 
- }
- 
- function requestAuthorization(){
-	 client_id = document.getElementById("clientId").ariaValueMax;
-	 client_secret = document.getElementById("clientSecret").ariaValueMax;
-	 localStorage.setItem("client_id",client_id);
-	 localStorage.setItem("client_secret",client_secret);//In a real app you should not expose your client_secret to a user
- 
-	 let url=AUTHORIZE;
-	 url += "?client_id=" + client_id;
-	 url += "&response_type=code";
-	 url += "&redirect_uri="+encodeURI(redirect_uri);
-	 url += "&show_dialog=ttrue";
-	 url += "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private";
-	 window.location.href = url; // Show Spotify's authorization screen
- }
- 
+// once a search is performed go to console
+
+// you will see the search results in array-object
+
+// to do: append searched movie to html ID
+
+		$(document).ready(function() {
+			var url = 'https://api.themoviedb.org/3/',
+			mode = 'search/movie',
+			input,
+			movieName,
+			key = '?api_key=491b43ef93087cf91389b9e31b71d2b1';
+		 
+			$('button').click(function() {
+			    var input = $('#movie-search').val(),
+				   movieName = encodeURI(input);
+			    $.ajax({
+				   url: url + mode + key + '&query='+movieName ,
+				   dataType: 'jsonp',
+				   success: function(data) {
+				    console.log(data);
+					$.each( data.results, function( i, item ) {
+						var posterFullUrl = "https://image.tmdb.org/t/p/w185//" + item.poster_path;
+						$("<div class='col-3 mb-1'><img src="+posterFullUrl+"><h3>" + item.title + "</h3></div>").appendTo(".search-movie");
+					});
+				    
+				   },
+				   error: function (request, status, error) {
+				    alert(status + ", " + error);
+				   }
+			    });
+			});
+		 });
+
+ //discogs
+ $.getJSON( api_url, function( data ) {
+
+	$.each( data.results, function( i, item ) {
+		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
+		$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.title + "</h3><p>"+ item.release_date +"</p></div>").appendTo(".popular-movies");
+	});
+});
+
  //event listener for when search button is clicked.
   document.getElementById("myBtn").addEventListener("click", displayDate);
  
-  function popularmusic(){
- 
-  }
- 
-  function searchmovie(){
- //When button is clicked return searched movie.
-  }
- 
-  function returnmusic(){
- //When button is clicked return seached music. Same search query for both movie and music.
-  }
- 
-  function finalresults(){
- //take our searched elements and dump them into html tag (ID tag)
- 
-  }
- 
+  
