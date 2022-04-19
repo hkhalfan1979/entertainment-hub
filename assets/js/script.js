@@ -9,7 +9,7 @@ var api_url_tv = "https://api.themoviedb.org/3/tv/popular?api_key=" + api_key; /
 
 			$.each( data.results, function( i, item ) {
 				var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-				$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.title + "</h3><p>"+ item.release_date +"</p></div>").appendTo(".popular-movies");
+				$("<div class='max-w-sm rounded overflow-hidden shadow-lg'><img class='w-full' src="+posterFullUrl+"><h3>" + item.title + "</h3><p>"+ item.release_date +"</p></div>").appendTo(".popular-movies");
 			});
 		});
     // call API and append data to div on index using ".popular-shows" class
@@ -17,7 +17,7 @@ var api_url_tv = "https://api.themoviedb.org/3/tv/popular?api_key=" + api_key; /
 
 			$.each( data.results, function( i, item ) {
 				var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-				$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.name + "</h3></div>").appendTo(".popular-shows");
+				$("<div class='max-w-sm rounded overflow-hidden shadow-lg'><img class='w-full' src="+posterFullUrl+"><h3>" + item.name + "</h3></div>").appendTo(".popular-shows");
 			});
 		});
 
@@ -46,7 +46,7 @@ var api_url_tv = "https://api.themoviedb.org/3/tv/popular?api_key=" + api_key; /
 				    console.log(data);
 					$.each( data.results, function( i, item ) {
 						var posterFullUrl = "https://image.tmdb.org/t/p/w185//" + item.poster_path;
-						$("<div class='col-3 mb-1'><img src="+posterFullUrl+"><h3>" + item.title + "</h3></div>").appendTo(".search-movie");
+						$("<div class='max-w-sm rounded overflow-hidden shadow-lg'><img class='w-full' src="+posterFullUrl+"><h3>" + item.title + "</h3></div>").appendTo(".search-movie");
 					});
 				    
 				   },
