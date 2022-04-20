@@ -49,17 +49,19 @@ $.getJSON(api_url_tv, function (data) {
 // to do: append searched movie to html ID
 
 $(document).ready(function () {
-	var url = 'https://api.themoviedb.org/3/',
-		mode = 'search/movie',
-		input,
-		movieName,
-		key = '?api_key=491b43ef93087cf91389b9e31b71d2b1';
+	
 
 	$('button').on("click", search)
 
 });
 
 function search() {
+	var url = 'https://api.themoviedb.org/3/',
+		mode = 'search/movie',
+		input,
+		movieName,
+		key = '?api_key=491b43ef93087cf91389b9e31b71d2b1';
+		
 	var input = $('#movie-search').val(),
 		movieName = encodeURI(input);
 	$.ajax({
@@ -88,8 +90,7 @@ $.getJSON(api_url, function (data) {
 	});
 });
 
-//event listener for when search button is clicked.
-document.getElementById("myBtn").addEventListener("click", displayDate);
+
 
 function SearchArtists() {
 	var SearchArtist = "eminem";
