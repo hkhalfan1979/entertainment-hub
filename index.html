@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <meta content="watch movies United States, stream tv, online, movies, listen to music, online music" name="keywords">
     <meta content="PC, Mac mobile, watch and online streaming to movies and music">
-    <title>Entertainment Hub | Group Project</title>
+    <title>Entertainment Hub</title>
      
-	
-   
    <link
      rel="stylesheet"
      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -33,6 +32,36 @@
 
 </head>
 <body>
+    <div class="=container">
+        <nav class="navbar">
+            <div class="left">
+                <img src="images/Entertainment Hub logo.png" alt="">
+            </div>
+            <div class="right">
+                <select name="language" class="language">
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="German">German</option>
+                </select>
+                <button><a href="#">Sign In</a></button>
+            </div>
+        </nav>
+
+        <div class="title">
+            <div class="content">
+                <hi>Online streaming to Movies, Music and TV shows</hi>
+                <h2>Endless streaming. No contract</h2>
+                <form action="#">
+                    <h3>Enter your email to create membership</h3>
+                    <div class="email">
+                        <input type="email" name="email" placeholder="Email address">
+                        <button><a href="#">Click </a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
 	<div class="container mt-3">
@@ -40,17 +69,17 @@
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="movie-search" type="text" />
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Search</button>
     </div>
-    <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600" >My Search results</h1>
+    <h1 class="font-medium leading-tight text-4xl mt-0 mb-2 text-blue-400" >My Search Results</h1>
     <div class="row grid grid-cols-6 gap-4 search-movie">
       
 			<!-- searched shows -->
 		</div>
 
-    <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600" >Movies</h1>
+    <h1 class="font-medium leading-tight text-4xl mt-0 mb-2 text-blue-600" >Movies</h1>
 		<div class="row grid grid-cols-6 gap-4 popular-movies">
 			<!-- popular movies -->
 		</div>
-    <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600" >TV Shows</h1>
+    <h1 class="font-medium leading-tight text-4xl mt-0 mb-2 text-blue-600" >TV Shows</h1>
 		<div class="row grid grid-cols-6 gap-4 popular-shows">
 			<!-- popular tv shows -->
 		</div>
@@ -59,7 +88,7 @@
 	</div>
 
 
-  <input id="movie-search" type="text" /><button>Search</button>
+  
 </body>
 </html>
 
