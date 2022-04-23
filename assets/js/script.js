@@ -64,16 +64,15 @@ var music_url= "https://api.discogs.com/artists/22854?token=" + APIMusic_key; //
 			});
 		 });
 
- //discogs
- $.getJSON( api_url, function( data ) {
 
-	$.each( data.results, function( i, item ) {
-		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-		$("<div class='col-md-3'><img src="+posterFullUrl+"><h3>" + item.title + "</h3><p>"+ item.release_date +"</p></div>").appendTo(".popular-movies");
-	});
-});
 
  //event listener for when search button is clicked.
   document.getElementById("myBtn").addEventListener("click", displayDate);
  
+  //displaying album information
+
+  function displayAlbums(data){
+	  console.log(album);
+  }
+
   
