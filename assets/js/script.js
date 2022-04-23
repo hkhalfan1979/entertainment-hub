@@ -71,7 +71,7 @@ function search() {
 			console.log(data);
 			$.each(data.results, function (i, item) {
 				var posterFullUrl = "https://image.tmdb.org/t/p/w185//" + item.poster_path;
-				var movieDiv = $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='p-2'>" + item.title + "</h3><p class='p-2'>" + item.release_date + "</p></div>");
+				var movieDiv = $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='p-2 text-red-700'>" + item.title + "</h3><p class='p-2'>" + item.release_date + "</p></div>");
 				movieDiv.appendTo(".search-movie");
 				var artist = item.title;
 				movieDiv.on("click", function(){
@@ -92,7 +92,7 @@ $.getJSON(api_url, function (data) {
 
 	$.each(data.results, function (i, item) {
 		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-		$("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3>" + item.title + "</h3><p class='p-2  text-red-700'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
+		$("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='p-2'>" + item.title + "</h3><p class='p-2 text-red-700'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
 	});
 });
 
