@@ -82,7 +82,7 @@ function search() {
 		}
 	});
 };
-
+//display data from modal
 function SearchAlbums(artist) {
 
 	fetch('https://api.spotify.com/v1/search?type=album&include_external=audio&q=' + artist, {
@@ -96,13 +96,17 @@ function SearchAlbums(artist) {
 		return response.json()
 	}).then(function (data) {
 		console.log(data);
-		//run a loop to go through an object array and append to search movies id/class.
-			const albumName = data.albums.items[0].name
+			var infolinedup = $('#music-info').val().split('\n');
+			const albumtracks= "Number of Tracks: " + data.albums.items[0].total_tracks;
+			const albumdate = "Track release date: " + data.albums.items[0].release_date
+			const albumName = "Album Name: " + data.albums.items[0].name
 			const albumDiv = document.getElementById("Album Name");	
 				$("#Popup_Modal").show(); 
 				$("#music-info").text(albumName);
+				$("#music-tracks").text(albumtracks);
+				$("#music-date").text(albumdate);
 				$("#seemore-btn").attr("data-href","https://www.youtube.com/results?search_query="+albumName.split(" ").join("+"));
-		return albumName;
+		return infolinedup.forEach(item => console.log(item));
 	})
 }
 
