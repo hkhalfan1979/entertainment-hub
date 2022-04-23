@@ -27,7 +27,7 @@ $.getJSON(api_url, function (data) {
 	$.each(data.results, function (i, item) {
 		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
 
-		$("<div class='max-w-sm rounded overflow-hidden shadow-lg'><img class='w-full' src=" + posterFullUrl + "><h3 class='text-blue-900 text-xl font-medium mb-2'>" + item.title + "</h3><p>" + item.release_date + "</p></div>").appendTo(".popular-movies");
+		$("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='text-blue-900 text-xl font-medium mb-2 p-2'>" + item.title + "</h3><p class='p-2 text-red-700'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
 
 	});
 });
@@ -36,7 +36,7 @@ $.getJSON(api_url_tv, function (data) {
 
 	$.each(data.results, function (i, item) {
 		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-		$("<div class='max-w-sm rounded overflow-hidden shadow-lg'><img class='w-full' src=" + posterFullUrl + "><h3>" + item.name + "</h3></div>").appendTo(".popular-shows");
+		$("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3  class='p-2'>" + item.name + "</h3></div>").appendTo(".popular-shows");
 	});
 });
 
@@ -61,7 +61,7 @@ function search() {
 		input,
 		movieName,
 		key = '?api_key=491b43ef93087cf91389b9e31b71d2b1';
-		
+
 	var input = $('#movie-search').val(),
 		movieName = encodeURI(input);
 	$.ajax({
@@ -71,8 +71,14 @@ function search() {
 			console.log(data);
 			$.each(data.results, function (i, item) {
 				var posterFullUrl = "https://image.tmdb.org/t/p/w185//" + item.poster_path;
-
-				$("<div class='max-w-sm rounded overflow-hidden shadow-lg'><img class='w-full' src=" + posterFullUrl + "><h3>" + item.title + "</h3></div>").appendTo(".search-movie");
+				var movieDiv = $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='p-2'>" + item.title + "</h3><p class='p-2'>" + item.release_date + "</p></div>");
+				movieDiv.appendTo(".search-movie");
+				var artist = item.title;
+				movieDiv.on("click", function(){
+					gettoken(function(){
+						SearchArtist(artist);
+					});
+				})
 			});
 
 		},
@@ -86,15 +92,15 @@ $.getJSON(api_url, function (data) {
 
 	$.each(data.results, function (i, item) {
 		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-		$("<div class='col-md-3'><img src=" + posterFullUrl + "><h3>" + item.title + "</h3><p>" + item.release_date + "</p></div>").appendTo(".popular-movies");
+		$("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3>" + item.title + "</h3><p class='p-2  text-red-700'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
 	});
 });
 
 
 
-function SearchArtists() {
-	var SearchArtist = "eminem";
-	fetch('https://api.spotify.com/v1/search?type=artist&include_external=audio&q=' + SearchArtist, {
+function SearchArtist(artist) {
+
+	fetch('https://api.spotify.com/v1/search?type=album&include_external=audio&q=' + artist, {
 		method: 'get',
 		headers: {
 			"content-type": "application/json",
@@ -108,7 +114,7 @@ function SearchArtists() {
 	})
 }
 
-function gettoken() {
+function gettoken(callback) {
 	// get token to look at time get toekn before refreshing 
 	// save current time after getting it.
 	// need a conditional that will oly get token if time has elapsed (30 mins example)
@@ -126,7 +132,7 @@ function gettoken() {
 	}).then(function (data) {
 		access_token = data.access_token;
 		console.log(data.access_token);
-		SearchArtist();
+		callback();
 	})
 };
 
