@@ -48,13 +48,7 @@ $.getJSON(api_url_tv, function (data) {
 
 // to do: append searched movie to html ID
 
-$(document).ready(function () {
-	
-
-	$('button').on("click", search)
-
-});
-
+$(document).on("click","#search-btn",search)
 function search() {
 	var url = 'https://api.themoviedb.org/3/',
 		mode = 'search/movie',
@@ -69,6 +63,7 @@ function search() {
 		dataType: 'jsonp',
 		success: function (data) {
 			console.log(data);
+			$(".search-movie").empty();
 			$.each(data.results, function (i, item) {
 				var posterFullUrl = "https://image.tmdb.org/t/p/w185//" + item.poster_path;
 				var movieDiv = $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='p-2'>" + item.title + "</h3><p class='p-2'>" + item.release_date + "</p></div>");
@@ -87,16 +82,6 @@ function search() {
 		}
 	});
 };
-//discogs
-$.getJSON(api_url, function (data) {
-
-	$.each(data.results, function (i, item) {
-		var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-		$("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3>" + item.title + "</h3><p class='p-2  text-red-700'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
-	});
-});
-
-
 
 function SearchAlbums(artist) {
 
@@ -114,6 +99,9 @@ function SearchAlbums(artist) {
 		//run a loop to go through an object array and append to search movies id/class.
 			const albumName = data.albums.items[0].name
 			const albumDiv = document.getElementById("Album Name");	
+				$("#Popup_Modal").show(); 
+				$("#music-info").text(albumName);
+				$("#seemore-btn").attr("data-href","https://www.youtube.com/results?search_query="+albumName.split(" ").join("+"));
 		return albumName;
 	})
 }
@@ -139,4 +127,11 @@ function gettoken(callback) {
 		callback();
 	})
 };
+//modal
+$(document).on("click", "#cancel-btn",function () { 
+    $("#Popup_Modal").css("display", "none");
+});
+$(document).on("click", "#seemore-btn",function (event) { 
+    window.location.href= event.target.dataset.href;
+});
 
