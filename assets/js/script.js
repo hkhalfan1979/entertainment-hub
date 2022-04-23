@@ -76,7 +76,7 @@ function search() {
 				var artist = item.title;
 				movieDiv.on("click", function(){
 					gettoken(function(){
-						SearchArtist(artist);
+						SearchAlbums(artist);
 					});
 				})
 			});
@@ -112,6 +112,9 @@ function SearchAlbums(artist) {
 	}).then(function (data) {
 		console.log(data);
 		//run a loop to go through an object array and append to search movies id/class.
+			const albumName = data.albums.items[0].name
+			const albumDiv = document.getElementById("Album Name");	
+		return albumName;
 	})
 }
 
