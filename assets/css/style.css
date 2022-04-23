@@ -27,3 +27,21 @@
     transform: translate(-50%, -50%);
     text-align: center;
   }
+.container {
+     margin: 0 auto;
+}
+.search-bar {
+     padding: 30px 30px 70px;
+}
+.search-bar input {
+     float: left;
+     width: 70%;
+}
+.search-bar button {
+     float: left;
+     width: 30%;
+}
+
+.single-movie-item {
+     
+}
