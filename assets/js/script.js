@@ -138,4 +138,3 @@ $(document).on("click", "#cancel-btn",function () {
 $(document).on("click", "#seemore-btn",function (event) { 
     window.location.href= event.target.dataset.href;
 });
-
