@@ -1,13 +1,17 @@
 # Entertainment-Hub
 
 ## Team Members Credits
-```
+
 Zhunn Altmark: https://github.com/hkhalfan1979/entertainment-hub/tree/Zhunn
+
 Jonathan Clark: https://github.com/hkhalfan1979/entertainment-hub/tree/ClarkJon969
+
 Leelai Hayslett: https://github.com/hkhalfan1979/entertainment-hub/tree/Leelai
+
 Hasnain Khalfan: https://github.com/hkhalfan1979/entertainment-hub/tree/hasnain
+
 Sydnee Peebles: https://github.com/hkhalfan1979/entertainment-hub/tree/speebles
-```
+
 ## Description 
 
 The purpose of our application is to merge two seperate API's (Application Program Interface) so the user can have access to detailed information, from the movie/tv show down to the very album information that is present within the movie. We took this concept and utilized the Spotify API and Movie/TV Show DB API to interact with each in our code. The goal was to display the data from each individual API through the users click interaction. After the user searchs a movie (or TV show), results related to their search criteria is displayed. By clicking on the cinematic piece, the user is then presented with album information pertaining to that movie (in pop up form). Furthermore to gain more access to more interactive music/video aspects we provided a redirect in the pop up.
@@ -17,6 +21,7 @@ The purpose of our application is to merge two seperate API's (Application Progr
 Most streaming websites allow their users to watch select tv shows and movies. But an element that most of these websites lack are a musical aspect. By integrating movie/tv show api with the well known spotify api, we want to allow users to find the album from said movie/tvshow. We plan for the users easy accessability to info on their favorite cinematics down to the music for an in-depth interaction. 
 
 ## Table of Contents
+- [Wireframe](#wireframe)
 - [Website Launch](#website)
 - [Github Link](#github-link)
 - [Usage](#usage)
@@ -30,6 +35,8 @@ https://hkhalfan1979.github.io/entertainment-hub/
 
 https://github.com/hkhalfan1979/entertainment-hub
 
+## Wireframe
+![Wireframe](./assets/images/Wireframe.png)
 ## Usage
 
 Landing Page: Popular Movies
