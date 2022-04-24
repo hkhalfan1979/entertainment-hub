@@ -2,31 +2,36 @@
 var api_key = "491b43ef93087cf91389b9e31b71d2b1"; //my api key
 var api_url = "https://api.themoviedb.org/3/movie/popular?api_key=" + api_key; // popular movies API
 var api_url_tv = "https://api.themoviedb.org/3/tv/popular?api_key=" + api_key; // popular tv shows API
+
 var params = {
     redirect_uri: "http://localhost:58628/njtest/spotifytest2.html",
     client_id: "25822c96ad284242ac169b4553981cc0",
     client_secret: "572e8e1cc86a404d9eaccd9a9dc2ef19"
 };
+
 const AUTHORIZE = "https://accounts.spotify.com/authorize";
 var access_token = "";
 var access_token_creation_time = null;
 var { client_id, client_secret } = params;
 var APIMusic_key = "ySHodLFbACXmhECkEOXxTuSVePemPzwezFSvTTsx"// Leelai's api key
 var music_url = "https://api.discogs.com/artists/22854?token=" + APIMusic_key; //Discogs music data
+
 // call API and append data to div on index using ".popular-movies" class
 $.getJSON(api_url, function (data) {
     $.each(data.results, function (i, item) {
         var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-        $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='text-blue-900 text-xl font-medium mb-2 p-2'>" + item.title + "</h3><p class='p-2 text-red-700'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
+        $("<div class='max-w-sm rounded overflow-hidden shadow-lg bg-yellow-500 mb-5 single-movie-item'><div style='overflow:hidden;'><img class='w-full transform h-64 bg-blue-400 w-1/5 hover:bg-blue-600 transition duration-500 hover:scale-125' src=" + posterFullUrl + "></div><h3 class='text-black text-xl font-medium mb-2 p-2'>" + item.title + "</h3><p class='p-2 text-black'>" + item.release_date + "</p></div>").appendTo(".popular-movies");
     });
 });
+
 // call API and append data to div on index using ".popular-shows" class
 $.getJSON(api_url_tv, function (data) {
     $.each(data.results, function (i, item) {
         var posterFullUrl = "https://image.tmdb.org/t/p/w185/" + item.poster_path;
-        $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3  class='p-2'>" + item.name + "</h3></div>").appendTo(".popular-shows");
+        $("<div class='max-w-sm rounded overflow-hidden shadow-lg bg-yellow-500 mb-5  single-movie-item'><div style='overflow:hidden;'><img class='w-full transform h-64 bg-blue-400 w-1/5 hover:bg-blue-600 transition duration-500 hover:scale-125' src=" + posterFullUrl + "></div><h3  class='p-2'>" + item.name + "</h3></div>").appendTo(".popular-shows");
     });
 });
+
 // script to return search results when button is clicked
 // once a search is performed go to console
 // you will see the search results in array-object
@@ -48,7 +53,7 @@ function search() {
             $(".search-movie").empty();
             $.each(data.results, function (i, item) {
                 var posterFullUrl = "https://image.tmdb.org/t/p/w185//" + item.poster_path;
-                var movieDiv = $("<div class='max-w-sm rounded overflow-hidden shadow-lg single-movie-item'><img class='w-full' src=" + posterFullUrl + "><h3 class='p-2'>" + item.title + "</h3><p class='p-2'>" + item.release_date + "</p></div>");
+                var movieDiv = $("<div class='max-w-sm rounded overflow-hidden shadow-lg bg-yellow-500 mb-5 single-movie-item'><div style='overflow:hidden;'><img class='w-full transform h-64 bg-blue-400 w-1/5 hover:bg-blue-600 transition duration-500 hover:scale-125' src=" + posterFullUrl + "></div><h3 class='p-2'>" + item.title + "</h3><p class='p-2'>" + item.release_date + "</p></div>");
                 movieDiv.appendTo(".search-movie");
                 var artist = item.title;
                 movieDiv.on("click", function(){
@@ -63,6 +68,7 @@ function search() {
         }
     });
 };
+
 //display data from modal
 function SearchAlbums(artist) {
     fetch('https://api.spotify.com/v1/search?type=album&include_external=audio&q=' + artist, {
@@ -81,7 +87,8 @@ function SearchAlbums(artist) {
             const albumdate = "Track release date: " + data.albums.items[0].release_date
             const albumName = "Album Name: " + data.albums.items[0].name
             const albumDiv = document.getElementById("Album Name");
-                $("#Popup_Modal").show();
+		  
+                $("#Popup_Modal").show();			
                 $("#music-info").text(albumName);
                 $("#music-tracks").text(albumtracks);
                 $("#music-date").text(albumdate);
@@ -89,6 +96,7 @@ function SearchAlbums(artist) {
         return infolinedup.forEach(item => console.log(item));
     })
 }
+
 function gettoken(callback) {
     // get token to look at time get token before refreshing
     // save current time after getting it.
@@ -110,10 +118,14 @@ function gettoken(callback) {
         callback();
     })
 };
+
 //modal
 $(document).on("click", "#cancel-btn",function () {
     $("#Popup_Modal").css("display", "none");
 });
+$(document).on("click", "#search-btn",function () {
+	$("#search-results-headline").css("display", "block");
+ });
 $(document).on("click", "#seemore-btn",function (event) {
     window.location.href= event.target.dataset.href;
 });
