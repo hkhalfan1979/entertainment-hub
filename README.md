@@ -26,6 +26,7 @@ Most streaming websites allow their users to watch select tv shows and movies. B
 - [Github Link](#github-link)
 - [Usage](#usage)
 - [Challenges](#challenges)
+- [Presentation](#presentation-ppt-link)
 - [Third Party Assets](#third-party-assets)
 ## Website
 
@@ -62,6 +63,12 @@ The most challenging part of this project was pulling information from the API a
 -Being able to directly select and listen to a song from the album.
 -Provide the user with app locations such as Netflix, Hulu, HBO, ect. to watch a selected movie or tv show.
 -Expand the cinematic selections (add another API) to movies and tv shows outside of mostly western culture such as anime, k-dramas. european films, ect.
+
+## Presentation ppt Link
+
+Below is the powerpoint used to present the webapp concept.
+
+https://github.com/hkhalfan1979/entertainment-hub/tree/Leelai/presentation
 
 ## Third-Party-Assets
 ```
