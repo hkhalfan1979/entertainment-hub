@@ -29,7 +29,7 @@ document.querySelector("#trigger").addEventListener("click", function () {
 
 function SearchArtists(){
     var SearchArtist= "";
-    fetch('https://api.spotify.com/v1/search?type=artist&include_external=audio&q='+ SearchArtist, {
+    fetch('https://api.spotify.com/v1/search?type=album&include_external=audio&q='+ SearchArtist, {
         method: 'get',
         headers: {
           "content-type": "application/json",
@@ -43,9 +43,37 @@ function SearchArtists(){
     })
 }
 
+
+
+// this function will have to go in the function Hasnain made
+function onhover(){
+  $overlay.append($images);
+  $overlay.append($artist);
+  $overlay.append($release_date_precision);
+
+  document.getElementById("overlay").style.display="block";
+  $("body").append($overlay);
+  }
+}
+
+function offhover(){
+  $overlay.append($images);
+  $overlay.append($artist);
+  $overlay.append($release_date_precision);
+
+  document.getElementById("overlay").style.display="none";
+  $("body").append($overlay);
+}
+
+$.getJSON(spotifyAPI, SpotifyDetails, displayAlbums);
+
+
+
+
 // function searchalbum(){
 //     var SearchAlbums= "spiral";
-//     fetch('https://api.spotify.com/v1/artists/{id}/albums&include_external=audio&q='+ SearchAlbums, {
+//     fetch('https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?market=ES&limit=10&offset=5
+//     '+ SearchAlbums, {
 //         method: 'get',
 //         headers: {
 //           "content-type": "application/json",
